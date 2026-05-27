@@ -599,8 +599,11 @@ body.menu-open .float-wa{display:none}
   .mosaic{grid-template-columns:1fr 1fr}
 
   /* — Contact — */
-  .contact-left{border-right:none;border-bottom:1px solid var(--border)}
+  .contact-left{border-right:none;border-bottom:1px solid var(--border);order:2}
+  .contact-right{order:1}
   .cf-row{grid-template-columns:1fr}
+  .map-box iframe{display:none}
+  .map-box{margin-top:1rem}
 
   /* — Consultation — */
   .consult-hero{padding:3rem 1.4rem}
