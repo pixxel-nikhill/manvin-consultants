@@ -1,0 +1,31 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting",
+          "endsPattern": "Ready in"
+        }
+      },
+      "runOptions": {
+        "runOn": "default"
+      }
+    },
+    {
+      "label": "Open in Chrome",
+      "type": "shell",
+      "command": "Start-Process 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' 'http://localhost:3000'",
+      "dependsOn": "dev",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Manvin Consultants – Architecture & Interior Design, Jaipur</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --gold:#C9A84C;--gold-lt:#E8D5A3;--gold-dk:#7a6128;
+  --bg:#0f0f0e;--bg2:#181817;--bg3:#202020;--border:#2a2a28;
+  --stone:#8a8880;--cream:#f0ece2;--cream2:#b8b4a8;
+  --ff-d:'Cormorant Garamond',Georgia,serif;
+  --ff-b:'DM Sans',system-ui,sans-serif;
+}
+body{font-family:var(--ff-b);background:var(--bg);color:var(--cream);line-height:1.6;overflow-x:hidden}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--ff-b);cursor:pointer;border:none;background:none}
+
+/* ══════════════════ NAV ══════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 4rem;
+  background:rgba(15,15,14,0.88);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  transition:padding .3s;
+}
+.logo{font-family:var(--ff-d);font-size:1.45rem;font-weight:300;letter-spacing:.06em;color:var(--gold)}
+.logo span{color:var(--cream)}
+.nav-pages{display:flex;gap:0}
+.nav-page-btn{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--stone);padding:.5rem 1.2rem;
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.nav-page-btn:hover,.nav-page-btn.active{color:var(--cream);border-bottom-color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-wa{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#25D366;border:1px solid #1a4a28;
+  padding:.45rem 1rem;transition:background .2s;
+}
+.nav-wa:hover{background:#0d2218}
+.nav-wa-dot{width:7px;height:7px;border-radius:50%;background:#25D366;flex-shrink:0}
+.nav-cta{
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+  color:var(--bg);background:var(--gold);padding:.55rem 1.4rem;
+  transition:background .2s;
+}
+.nav-cta:hover{background:var(--gold-lt)}
+
+/* ══════════════════ PAGE SYSTEM ══════════════════ */
+.page{display:none;min-height:100vh;padding-top:72px}
+.page.active{display:block}
+
+/* ══════════════════ SHARED ══════════════════ */
+.tag{display:flex;align-items:center;gap:.6rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.h2{font-family:var(--ff-d);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1rem}
+.h2 em{color:var(--gold);font-style:italic}
+.sub{font-size:.92rem;color:var(--stone);line-height:1.85;max-width:460px}
+.btn-gold{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--bg);background:var(--gold);padding:.8rem 2rem;border:none;cursor:pointer;transition:background .2s,transform .15s;display:inline-block}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn-outline{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream2);border:1px solid var(--border);padding:.8rem 2rem;display:inline-flex;align-items:center;gap:.5rem;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.divider{width:100%;height:1px;background:var(--border)}
+
+/* ══════════════════ HOME PAGE ══════════════════ */
+
+/* Hero */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 72px);
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5rem 3.5rem 5rem 4.5rem;
+}
+.hero-tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.6rem;margin-bottom:2rem}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero-h1{font-family:var(--ff-d);font-size:clamp(3.2rem,5.5vw,5.5rem);font-weight:300;line-height:1.05;color:var(--cream);margin-bottom:1.6rem}
+.hero-h1 em{color:var(--gold);font-style:italic}
+.hero-desc{font-size:.92rem;color:var(--stone);max-width:400px;line-height:1.85;margin-bottom:2.5rem}
+.hero-btns{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.stat-num{font-family:var(--ff-d);font-size:2.2rem;font-weight:300;color:var(--gold);line-height:1}
+.stat-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:.3rem}
+
+/* Hero image mosaic */
+.hero-right{position:relative;overflow:hidden;background:var(--bg2)}
+.mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:60% 40%;height:100%}
+.mosaic-main{grid-column:1/3;position:relative;overflow:hidden}
+.mosaic-main img{transition:transform 8s ease}
+.mosaic-main:hover img{transform:scale(1.04)}
+.mosaic-b1,.mosaic-b2{position:relative;overflow:hidden;border-top:2px solid var(--bg)}
+.mosaic-b1{border-right:1px solid var(--bg)}
+.mosaic-b2{position:relative}
+.mosaic-badge{
+  position:absolute;bottom:1.2rem;right:1.2rem;
+  background:var(--gold);padding:.9rem 1rem;text-align:center;
+}
+.mosaic-badge-n{font-family:var(--ff-d);font-size:1.8rem;font-weight:300;color:var(--bg);line-height:1}
+.mosaic-badge-t{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);margin-top:2px}
+.mosaic-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(15,15,14,.7));pointer-events:none}
+
+/* Marquee */
+.marquee-wrap{overflow:hidden;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0}
+.marquee-track{display:flex;width:max-content;animation:scroll 25s linear infinite}
+.marquee-track span{font-family:var(--ff-d);font-size:.9rem;font-weight:300;letter-spacing:.06em;color:var(--stone);white-space:nowrap;padding:0 1.5rem}
+.marquee-track em{color:var(--gold);font-style:normal}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Home services strip */
+.home-services{padding:5rem 4.5rem}
+.home-services-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem}
+.service-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.svc{background:var(--bg);padding:2.2rem 1.8rem;transition:background .3s}
+.svc:hover{background:var(--bg3)}
+.svc-n{font-size:.7rem;letter-spacing:.12em;color:var(--gold-dk);margin-bottom:1.5rem}
+.svc-icon{font-size:1.8rem;margin-bottom:1rem;line-height:1}
+.svc-title{font-family:var(--ff-d);font-size:1.25rem;color:var(--cream);margin-bottom:.6rem;line-height:1.3}
+.svc-desc{font-size:.82rem;color:var(--stone);line-height:1.75}
+.svc-arr{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:1.4rem;transition:gap .2s}
+.svc:hover .svc-arr{gap:.8rem}
+
+/* Home featured projects */
+.home-projects{padding:0 4.5rem 5rem}
+.home-proj-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2rem}
+.proj-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:340px 240px;gap:4px}
+.proj-card{position:relative;overflow:hidden;cursor:pointer;background:var(--bg3)}
+.proj-card img{transition:transform .6s ease}
+.proj-card:hover img{transform:scale(1.06)}
+.proj-card.tall{grid-row:1/3}
+.proj-info{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(15,15,14,.92) 0%,transparent 100%);
+  padding:1.4rem 1.2rem .9rem;
+  transform:translateY(4px);opacity:0;
+  transition:opacity .3s,transform .3s;
+}
+.proj-card:hover .proj-info{opacity:1;transform:translateY(0)}
+.proj-cat{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem}
+.proj-name{font-family:var(--ff-d);font-size:1.15rem;font-weight:400;color:var(--cream)}
+
+/* ══════════════════ FREE HOOK ══════════════════ */
+.free-hook {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 4.5rem;
+  text-align: center;
+}
+.hook-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 3rem auto 0;
+  max-width: 1000px;
+}
+.hook-card {
+  background: var(--bg);
+  border: 1px solid var(--gold);
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+.hook-card:hover { 
+  transform: translateY(-8px); 
+  box-shadow: 0 15px 30px rgba(201, 168, 76, 0.15); 
+}
+.hook-icon { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+.hook-title { font-family: var(--ff-d); font-size: 1.4rem; color: var(--cream); margin-bottom: 0.5rem; }
+.hook-desc { font-size: 0.85rem; color: var(--stone); }
+
+/* ══════════════════ PORTFOLIO PAGE ══════════════════ */
+.port-hero{
+  background:var(--bg2);
+  padding:4rem 4.5rem 3rem;
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:flex-end;
+}
+.port-filters{display:flex;gap:.4rem;flex-wrap:wrap;margin:2rem 4.5rem 2rem}
+.filt{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);background:none;border:1px solid var(--border);padding:.45rem 1.1rem;cursor:pointer;transition:all .2s}
+.filt.on,.filt:hover{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 4.5rem 5rem}
+.port-item{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:pointer;background:var(--bg3)}
+.port-item img{transition:transform .6s}
+.port-item:hover img{transform:scale(1.07)}
+.port-item.wide{grid-column:span 2;aspect-ratio:16/7}
+.port-hover{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,15,14,.9) 0%,rgba(15,15,14,.15) 60%,transparent);
+  opacity:0;transition:opacity .3s;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;
+}
+.port-item:hover .port-hover{opacity:1}
+.port-cat{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+.port-title{font-family:var(--ff-d);font-size:1.25rem;color:var(--cream)}
+.port-loc{font-size:.75rem;color:var(--cream2);margin-top:.2rem}
+
+/* ══════════════════ SERVICES PAGE ══════════════════ */
+.svcs-hero{padding:4rem 4.5rem 0;background:var(--bg2);border-bottom:1px solid var(--border)}
+.svcs-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding-bottom:4rem;align-items:end}
+.svcs-list{padding:3rem 4.5rem 5rem}
+.svcs-item{
+  display:grid;grid-template-columns:80px 1fr auto;
+  gap:2rem;align-items:start;
+  padding:2.8rem 0;border-bottom:1px solid var(--border);
+}
+.svcs-item-n{font-family:var(--ff-d);font-size:3rem;font-weight:300;color:var(--border);line-height:1}
+.svcs-item-icon{font-size:2rem;margin-bottom:.6rem}
+.svcs-item-title{font-family:var(--ff-d);font-size:1.5rem;font-weight:300;color:var(--cream);margin-bottom:.6rem}
+.svcs-item-desc{font-size:.85rem;color:var(--stone);line-height:1.8;max-width:500px}
+.svcs-item-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.tag-pill{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-dk);border:1px solid var(--border);padding:.3rem .7rem}
+.svcs-item-img{width:220px;height:150px;flex-shrink:0;overflow:hidden}
+
+/* ══════════════════ ABOUT PAGE ══════════════════ */
+.about-split{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 72px)}
+.about-img-col{position:relative;overflow:hidden;background:var(--bg2)}
+.about-img-col img{height:100%;object-fit:cover}
+.about-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--bg) 100%);pointer-events:none}
+.about-text-col{padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.about-quote{
+  font-family:var(--ff-d);font-size:1.05rem;font-style:italic;
+  color:var(--cream2);line-height:1.75;
+  border-left:2px solid var(--gold);padding-left:1.4rem;
+  margin:2rem 0;
+}
+.about-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:3rem}
+.ab-met{background:var(--bg2);padding:1.4rem 1rem;text-align:center}
+.ab-met-n{font-family:var(--ff-d);font-size:2rem;font-weight:300;color:var(--gold)}
+.ab-met-l{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-top:.3rem}
+.team-strip{padding:4rem 4.5rem 5rem;background:var(--bg2);border-top:1px solid var(--border)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.team-card{background:var(--bg);border:1px solid var(--border)}
+.team-photo{height:260px;overflow:hidden}
+.team-info{padding:1.4rem}
+.team-name{font-family:var(--ff-d);font-size:1.2rem;color:var(--cream);margin-bottom:.2rem}
+.team-role{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.team-bio{font-size:.8rem;color:var(--stone);line-height:1.7}
+
+/* ══════════════════ NETWORK DIRECTORY (PARTNERS PAGE) ══════════════════ */
+.network-wrap { padding: 4rem 4.5rem; background: var(--bg); }
+.net-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.net-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+.net-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  background: var(--bg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
+}
+.net-prof { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.net-name { font-family: var(--ff-d); font-size: 1.3rem; color: var(--cream); }
+.net-contact { font-size: 0.8rem; color: var(--stone); margin-top: 0.5rem; }
+.join-net-box {
+  margin-top: 4rem;
+  background: var(--bg3);
+  padding: 2.5rem;
+  border-left: 3px solid var(--gold);
+}
+
+/* ══════════════════ CONTACT PAGE ══════════════════ */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 72px)}
+.contact-left{background:var(--bg2);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--border)}
+.contact-right{padding:5rem 4rem}
+.contact-detail{display:flex;gap:1rem;margin-bottom:2rem;align-items:flex-start}
+.cd-ico{font-size:1.1rem;color:var(--gold);flex-shrink:0;margin-top:.1rem}
+.cd-lbl{font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);margin-bottom:.2rem}
+.cd-val{font-size:.92rem;color:var(--cream)}
+.map-box{width:100%;height:220px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-top:2rem;position:relative;overflow:hidden}
+.map-box iframe{width:100%;height:100%;border:none;opacity:.7;filter:grayscale(100%) invert(92%) contrast(83%)}
+.cf{display:flex;flex-direction:column;gap:1rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cf-g{display:flex;flex-direction:column;gap:.4rem}
+.cf-g label{font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--stone)}
+.cf-g input,.cf-g select,.cf-g textarea{
+  background:var(--bg2);border:1px solid var(--border);color:var(--cream);
+  padding:.75rem 1rem;font-family:var(--ff-b);font-size:.88rem;outline:none;
+  transition:border-color .2s;width:100%;
+}
+.cf-g input::placeholder,.cf-g textarea::placeholder{color:var(--stone)}
+.cf-g input:focus,.cf-g select:focus,.cf-g textarea:focus{border-color:var(--gold)}
+.cf-g select option{background:var(--bg2)}
+.cf-g textarea{resize:vertical;min-height:110px}
+.cf-submit{
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+  color:var(--bg);background:var(--gold);padding:.9rem 2.5rem;border:none;cursor:pointer;
+  align-self:flex-start;transition:background .2s,transform .15s;
+}
+.cf-submit:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.wa-cta-box{background:var(--bg3);border:1px solid #1a3a28;padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1rem;margin-top:2rem}
+.wa-cta-txt h4{font-family:var(--ff-d);font-size:1.1rem;font-weight:400;color:var(--cream)}
+.wa-cta-txt p{font-size:.78rem;color:var(--stone)}
+.wa-btn{flex-shrink:0;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:#1FAF38;padding:.65rem 1.2rem;white-space:nowrap;transition:background .2s}
+.wa-btn:hover{background:#17922e}
+
+/* ══════════════════ FLOATING WA ══════════════════ */
+.float-wa{
+  position:fixed;bottom:1.8rem;right:1.8rem;z-index:998;
+  display:flex;align-items:center;gap:.6rem;
+  background:#1FAF38;color:#fff;
+  padding:.85rem 1.3rem;
+  font-size:.78rem;font-weight:500;letter-spacing:.04em;
+  box-shadow:0 6px 28px rgba(0,0,0,.5);
+  cursor:pointer;animation:fadein .6s 1.2s both;
+  transition:transform .2s,box-shadow .2s;
+}
+.float-wa:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.6)}
+.float-wa svg{width:18px;height:18px;fill:#fff;flex-shrink:0}
+@keyframes fadein{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══════════════════ SCROLL REVEAL ══════════════════ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv1{transition-delay:.08s}.rv2{transition-delay:.16s}.rv3{transition-delay:.24s}
+
+/* ══════════════════ RESPONSIVE ══════════════════ */
+@media(max-width:900px){
+  #nav{padding:1rem 1.2rem}
+  .nav-pages{display:none}
+  .hero,.home-split,.about-split,.contact-layout{grid-template-columns:1fr}
+  .hero-right{height:55vw}
+  .home-services,.home-projects,.port-grid,.port-filters,.team-strip,.about-text-col,.contact-left,.contact-right,.svcs-list,.port-hero,.svcs-hero{padding-left:1.4rem;padding-right:1.4rem}
+  .service-strip,.team-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .proj-card.tall{grid-row:auto}
+  .port-grid{grid-template-columns:1fr 1fr}
+  .port-item.wide{grid-column:span 1;aspect-ratio:4/3}
+  .svcs-item{grid-template-columns:50px 1fr;grid-template-rows:auto auto}
+  .svcs-item-img{display:none}
+  .cf-row{grid-template-columns:1fr}
+  .mosaic{grid-template-columns:1fr 1fr}
+  .free-hook { padding: 4rem 1.4rem; }
+  .hook-grid { grid-template-columns: 1fr; }
+  .network-wrap { padding: 3rem 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<a class="float-wa" href="https://wa.me/919876543210?text=Hello%2C%20I%20found%20Manvin%20Consultants%20and%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Chat on WhatsApp
+</a>
+
+<nav id="nav">
+  <div class="logo">Manvin <span>Consultants</span></div>
+  <div class="nav-pages">
+    <button class="nav-page-btn active" data-page="home">Home</button>
+    <button class="nav-page-btn" data-page="portfolio">Portfolio</button>
+    <button class="nav-page-btn" data-page="services">Services</button>
+    <button class="nav-page-btn" data-page="about">About Us</button>
+    <button class="nav-page-btn" data-page="partners">Partners</button>
+    <button class="nav-page-btn" data-page="contact">Contact</button>
+  </div>
+  <div class="nav-right">
+    <a class="nav-wa" href="https://wa.me/919876543210" target="_blank" rel="noopener">
+      <div class="nav-wa-dot"></div>WhatsApp
+    </a>
+    <button class="nav-cta" onclick="goPage('contact')">Enquire Now</button>
+  </div>
+</nav>
+
+<div class="page active" id="page-home">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">Jaipur · Est. 2009 · 15+ Years</div>
+      <h1 class="hero-h1">We design<br>spaces that<br><em>inspire</em> &<br>endure.</h1>
+      <p class="hero-desc">Architectural, interior & construction consultancy rooted in Rajasthan. From Ghar Ka Naksha to full-site supervision — one team, start to finish.</p>
+      <div class="hero-btns">
+        <button class="btn-gold" onclick="goPage('contact')">Start Your Project</button>
+        <button class="btn-outline" onclick="goPage('portfolio')">View Portfolio →</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">200+</div><div class="stat-lbl">Projects Delivered</div></div>
+        <div><div class="stat-num">15+</div><div class="stat-lbl">Years of Practice</div></div>
+        <div><div class="stat-num">360°</div><div class="stat-lbl">Design to Handover</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="mosaic">
+        <div class="mosaic-main">
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1000&q=85" alt="Modern villa exterior"/>
+          <div class="mosaic-overlay"></div>
+        </div>
+        <div class="mosaic-b1">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&q=80" alt="Interior design"/>
+        </div>
+        <div class="mosaic-b2">
+          <img src="https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=500&q=80" alt="Architectural detail"/>
+          <div class="mosaic-badge">
+            <div class="mosaic-badge-n">₹10L+</div>
+            <div class="mosaic-badge-t">Projects Designed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>Architectural Design <em>✦</em></span><span>Interior Planning <em>✦</em></span>
+      <span>Ghar Ka Naksha <em>✦</em></span><span>Construction Consultancy <em>✦</em></span>
+      <span>Site Analysis <em>✦</em></span><span>3D Visualization <em>✦</em></span>
+      <span>Residential & Commercial <em>✦</em></span><span>Jaipur, Rajasthan <em>✦</em></span>
+      <span>Architectural Design <em>✦</em></span><span>Interior Planning <em>✦</em></span>
+      <span>Ghar Ka Naksha <em>✦</em></span><span>Construction Consultancy <em>✦</em></span>
+      <span>Site Analysis <em>✦</em></span><span>3D Visualization <em>✦</em></span>
+      <span>Residential & Commercial <em>✦</em></span><span>Jaipur, Rajasthan <em>✦</em></span>
+    </div>
+  </div>
+
+  <div class="home-services">
+    <div class="home-services-head">
+      <div>
+        <div class="tag rv">What We Do</div>
+        <h2 class="h2 rv">Our <em>Services</em></h2>
+      </div>
+      <button class="btn-outline rv" onclick="goPage('services')">All Services →</button>
+    </div>
+    <div class="service-strip">
+      <div class="svc rv">
+        <div class="svc-n">01</div>
+        <div class="svc-icon">◈</div>
+        <div class="svc-title">Architectural Design</div>
+        <p class="svc-desc">Residential & commercial design with site planning, feasibility, and conceptual layouts for any plot size.</p>
+        <div class="svc-arr">Learn more →</div>
+      </div>
+      <div class="svc rv rv1">
+        <div class="svc-n">02</div>
+        <div class="svc-icon">◉</div>
+        <div class="svc-title">Interior Design</div>
+        <p class="svc-desc">Curated finishes, lighting strategy, space optimization and modular joinery — interiors that feel personal.</p>
+        <div class="svc-arr">Learn more →</div>
+      </div>
+      <div class="svc rv rv2">
+        <div class="svc-n">03</div>
+        <div class="svc-icon">◧</div>
+        <div class="svc-title">Construction Consultancy</div>
+        <p class="svc-desc">On-site supervision, quality control, vendor coordination, and budget management — foundation to handover.</p>
+        <div class="svc-arr">Learn more →</div>
+      </div>
+      <div class="svc rv rv3">
+        <div class="svc-n">04</div>
+        <div class="svc-icon">◫</div>
+        <div class="svc-title">Ghar Ka Naksha</div>
+        <p class="svc-desc">Complete plot analysis, approval drawings, floor plans and elevations — build-ready blueprints.</p>
+        <div class="svc-arr">Learn more →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-projects">
+    <div class="home-proj-head rv">
+      <div>
+        <div class="tag">Selected Work</div>
+        <h2 class="h2">Featured <em>Projects</em></h2>
+      </div>
+      <button class="btn-outline" onclick="goPage('portfolio')">Full Portfolio →</button>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card tall rv">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=700&q=85" alt="Modern Villa, Jaipur" loading="lazy"/>
+        <div class="proj-info">
+          <div class="proj-cat">Residential · Jaipur</div>
+          <div class="proj-name">Modern Family Villa</div>
+        </div>
+      </div>
+      <div class="proj-card rv rv1">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Corporate Office" loading="lazy"/>
+        <div class="proj-info">
+          <div class="proj-cat">Commercial · Jaipur</div>
+          <div class="proj-name">Corporate Headquarters</div>
+        </div>
+      </div>
+      <div class="proj-card rv rv1">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Luxury Bungalow" loading="lazy"/>
+        <div class="proj-info">
+          <div class="proj-cat">Residential · Jaipur</div>
+          <div class="proj-name">Luxury Bungalow</div>
+        </div>
+      </div>
+      <div class="proj-card rv rv2">
+        <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=600&q=80" alt="Interior" loading="lazy"/>
+        <div class="proj-info">
+          <div class="proj-cat">Interior · Jaipur</div>
+          <div class="proj-name">Premium Living Room</div>
+        </div>
+      </div>
+      <div class="proj-card rv rv2">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="Commercial Complex" loading="lazy"/>
+        <div class="proj-info">
+          <div class="proj-cat">Commercial · Jaipur</div>
+          <div class="proj-name">Retail Complex</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="free-hook">
+    <div class="tag rv" style="justify-content: center;">Start With Confidence</div>
+    <h2 class="h2 rv">Claim Your <em>Free</em> Consultation</h2>
+    <p class="sub rv" style="margin: 0 auto;">Building is a big commitment. Let's remove the risk from your first step.</p>
+    
+    <div class="hook-grid">
+      <div class="hook-card rv rv1" onclick="goPage('contact')">
+        <div class="hook-icon">⏱️</div>
+        <div class="hook-title">15-Min Discovery</div>
+        <div class="hook-desc">A quick call to discuss your vision, timeline, and whether we are the right fit.</div>
+      </div>
+      <div class="hook-card rv rv2" onclick="goPage('contact')">
+        <div class="hook-icon">📐</div>
+        <div class="hook-title">Basic Plot Planning</div>
+        <div class="hook-desc">Share your plot dimensions and get a high-level feasibility assessment.</div>
+      </div>
+      <div class="hook-card rv rv3" onclick="goPage('contact')">
+        <div class="hook-icon">📊</div>
+        <div class="hook-title">Cost Estimate Sheet</div>
+        <div class="hook-desc">Get a realistic square-foot cost breakdown for current Jaipur market rates.</div>
+      </div>
+    </div>
+    
+    <button class="btn-gold rv" style="margin-top: 3rem;" onclick="goPage('contact')">Claim Your Free Session</button>
+  </div>
+
+</div><div class="page" id="page-portfolio">
+  <div class="port-hero">
+    <div>
+      <div class="tag">Our Work</div>
+      <h2 class="h2" style="margin-bottom:.5rem">Project <em>Portfolio</em></h2>
+      <p class="sub">200+ projects delivered across Jaipur and Rajasthan — residential, commercial, and industrial.</p>
+    </div>
+  </div>
+  <div class="port-filters">
+    <button class="filt on">All</button>
+    <button class="filt">Residential</button>
+    <button class="filt">Commercial</button>
+    <button class="filt">Industrial</button>
+    <button class="filt">Interior</button>
+  </div>
+  <div class="port-grid">
+    <div class="port-item wide rv">
+      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1000&q=85" alt="Villa" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Residential</div><div class="port-title">Modern Family Villa</div><div class="port-loc">Vaishali Nagar, Jaipur</div></div>
+    </div>
+    <div class="port-item rv rv1">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80" alt="Office" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Commercial</div><div class="port-title">Corporate HQ</div><div class="port-loc">Malviya Nagar, Jaipur</div></div>
+    </div>
+    <div class="port-item rv rv1">
+      <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=600&q=80" alt="Interior" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Interior</div><div class="port-title">Luxury Living Room</div><div class="port-loc">C-Scheme, Jaipur</div></div>
+    </div>
+    <div class="port-item rv">
+      <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Bungalow" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Residential</div><div class="port-title">Luxury Bungalow</div><div class="port-loc">Jagatpur, Jaipur</div></div>
+    </div>
+    <div class="port-item rv rv1">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="Retail" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Commercial</div><div class="port-title">Retail Complex</div><div class="port-loc">Tonk Road, Jaipur</div></div>
+    </div>
+    <div class="port-item rv rv2">
+      <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="Warehouse" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Industrial</div><div class="port-title">Warehouse Complex</div><div class="port-loc">RIICO, Jaipur</div></div>
+    </div>
+    <div class="port-item wide rv">
+      <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1000&q=85" alt="Villa 2" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Residential</div><div class="port-title">Contemporary Villa</div><div class="port-loc">Mansarovar, Jaipur</div></div>
+    </div>
+    <div class="port-item rv">
+      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80" alt="Architecture" loading="lazy"/>
+      <div class="port-hover"><div class="port-cat">Commercial</div><div class="port-title">Office Interior</div><div class="port-loc">Jaipur</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-services">
+  <div class="svcs-hero">
+    <div class="svcs-hero-inner">
+      <div>
+        <div class="tag">What We Offer</div>
+        <h2 class="h2">End-to-end design & <em>consultancy</em></h2>
+        <p class="sub" style="margin-top:1rem">From first sketch to final key — Manvin Consultants handles every phase so you don't have to juggle multiple firms.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div style="background:var(--bg3);padding:1.4rem;border-left:2px solid var(--gold)">
+          <div style="font-family:var(--ff-d);font-size:1rem;font-style:italic;color:var(--cream2);line-height:1.7">"One team. One point of contact. No confusion."</div>
+        </div>
+        <button class="btn-gold" onclick="goPage('contact')" style="align-self:flex-start">Start a Project</button>
+      </div>
+    </div>
+  </div>
+  <div class="svcs-list">
+    <div class="svcs-item rv">
+      <div class="svcs-item-n">01</div>
+      <div>
+        <div class="svcs-item-icon">◈</div>
+        <div class="svcs-item-title">Architectural Design Consultancy</div>
+        <p class="svcs-item-desc">We create homes, offices, and facilities that blend your vision with practical precision — site studies, zoning, concept layouts, detailed drawings, and approval sets, all under one roof.</p>
+        <div class="svcs-item-tags">
+          <span class="tag-pill">Residential</span><span class="tag-pill">Commercial</span><span class="tag-pill">Industrial</span><span class="tag-pill">Site Planning</span><span class="tag-pill">Feasibility Studies</span>
+        </div>
+      </div>
+      <div class="svcs-item-img">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=300&q=80" alt="Architecture" loading="lazy"/>
+      </div>
+    </div>
+    <div class="svcs-item rv">
+      <div class="svcs-item-n">02</div>
+      <div>
+        <div class="svcs-item-icon">◉</div>
+        <div class="svcs-item-title">Interior Design & Space Planning</div>
+        <p class="svcs-item-desc">Curated interiors that feel personal, purposeful, and future-ready. Smart layouts, material & finish selection, lighting strategy, and modular or custom joinery tailored to how you live.</p>
+        <div class="svcs-item-tags">
+          <span class="tag-pill">Space Optimization</span><span class="tag-pill">Material Selection</span><span class="tag-pill">Lighting Design</span><span class="tag-pill">Modular Interiors</span>
+        </div>
+      </div>
+      <div class="svcs-item-img">
+        <img src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?w=300&q=80" alt="Interior" loading="lazy"/>
+      </div>
+    </div>
+    <div class="svcs-item rv">
+      <div class="svcs-item-n">03</div>
+      <div>
+        <div class="svcs-item-icon">◧</div>
+        <div class="svcs-item-title">Construction Consultancy</div>
+        <p class="svcs-item-desc">We bridge design intent and on-site reality. Active supervision, contractor coordination, quality control, and budget management — keeping your build on track from foundation to handover.</p>
+        <div class="svcs-item-tags">
+          <span class="tag-pill">Project Scheduling</span><span class="tag-pill">Quality Control</span><span class="tag-pill">Vendor Coordination</span><span class="tag-pill">Budget Planning</span>
+        </div>
+      </div>
+      <div class="svcs-item-img">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=300&q=80" alt="Construction" loading="lazy"/>
+      </div>
+    </div>
+    <div class="svcs-item rv">
+      <div class="svcs-item-n">04</div>
+      <div>
+        <div class="svcs-item-icon">◫</div>
+        <div class="svcs-item-title">Ghar Ka Naksha & Mapping</div>
+        <p class="svcs-item-desc">We turn raw plots into clear, build-ready plans. Plot analysis, zoning & approval drawings, floor plans, elevations, and utility placement — all compliant and construction-ready.</p>
+        <div class="svcs-item-tags">
+          <span class="tag-pill">Plot Analysis</span><span class="tag-pill">Floor Plans</span><span class="tag-pill">Elevations</span><span class="tag-pill">Approval Drawings</span>
+        </div>
+      </div>
+      <div class="svcs-item-img">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=300&q=80" alt="Mapping" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-about">
+  <div class="about-split">
+    <div class="about-img-col">
+      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=85" alt="Manvin Consultants architecture" style="height:100%"/>
+      <div class="about-img-overlay"></div>
+    </div>
+    <div class="about-text-col">
+      <div>
+        <div class="tag rv">Our Story</div>
+        <h2 class="h2 rv">Architecture that speaks to <em>who you are</em></h2>
+        <p class="sub rv" style="margin-top:.8rem">Founded in Jaipur with a passion for spaces that breathe and belong, Manvin Consultants has spent over 15 years shaping homes, offices, and facilities across Rajasthan.</p>
+        <div class="about-quote rv">"Every plot holds a story. Our job is to help you tell it beautifully — through design that respects the land, the culture, and the people who live in it."</div>
+        <p class="sub rv">We believe great architecture isn't just construction — it's a conversation between structure, climate, and the people who live inside it.</p>
+      </div>
+      <div class="about-metrics rv" style="margin-top:2.5rem">
+        <div class="ab-met"><div class="ab-met-n">200+</div><div class="ab-met-l">Projects</div></div>
+        <div class="ab-met"><div class="ab-met-n">15+</div><div class="ab-met-l">Years</div></div>
+        <div class="ab-met"><div class="ab-met-n">100%</div><div class="ab-met-l">Client First</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="team-strip">
+    <div class="tag rv">The Founder</div>
+    <h2 class="h2 rv">Person behind <em>every project</em></h2>
+    <div class="team-grid">
+      <div class="team-card rv">
+        <div class="team-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Principal Architect" loading="lazy"/></div>
+        <div class="team-info">
+          <div class="team-name">Navin Sharma</div>
+          <div class="team-role">Principal Architect & Founder</div>
+          <p class="team-bio">15+ years in residential and commercial architecture across Rajasthan. Leads all design vision and client strategy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-partners">
+  
+  <div class="svcs-hero">
+    <div class="svcs-hero-inner" style="grid-template-columns: 1fr; padding-bottom: 2rem;">
+      <div>
+        <div class="tag">Trusted Network</div>
+        <h2 class="h2">Our Professional <em>Partners</em></h2>
+        <p class="sub" style="margin-top:1rem; max-width: 600px;">We collaborate with the finest contractors, engineers, and suppliers to bring our designs to life. Find the right expert for your build, or join our growing network.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="network-wrap" style="padding-top: 2rem;">
+    <div class="net-grid rv">
+      <div class="net-card">
+        <div class="net-prof">Structural Engineer</div>
+        <div class="net-name">Ramesh Engineering</div>
+        <div class="net-contact">📞 +91 98765 11111</div>
+      </div>
+      <div class="net-card">
+        <div class="net-prof">Premium Marble Supplier</div>
+        <div class="net-name">Kishangarh Stones</div>
+        <div class="net-contact">📞 +91 98765 22222</div>
+      </div>
+      <div class="net-card">
+        <div class="net-prof">Lead Contractor</div>
+        <div class="net-name">Sharma Builders</div>
+        <div class="net-contact">📞 +91 98765 33333</div>
+      </div>
+    </div>
+
+    <div class="join-net-box rv">
+      <h3 style="font-family:var(--ff-d); font-size:1.5rem; margin-bottom: 1rem;">Are you a professional? Join our network.</h3>
+      <p class="sub" style="margin-bottom: 1.5rem;">Submit your details to be featured in our affiliate directory and collaborate on future projects.</p>
+      
+      <form class="cf" onsubmit="alert('Backend integration required to save this data!'); return false">
+        <div class="cf-row">
+          <div class="cf-g"><input type="text" placeholder="Business / Your Name" required/></div>
+          <div class="cf-g"><input type="text" placeholder="Profession (e.g. Electrician, 3D Artist)" required/></div>
+        </div>
+        <div class="cf-row" style="margin-top: 1rem;">
+          <div class="cf-g"><input type="tel" placeholder="Phone Number" required/></div>
+          <button type="submit" class="cf-submit">Apply for Listing</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-contact">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <div>
+        <div class="tag rv">Get In Touch</div>
+        <h2 class="h2 rv">Let's build your <em>vision</em> together</h2>
+        <p class="sub rv" style="margin-bottom:2.5rem">Share a few details and we'll respond within 24 hours with the right consultancy pathway for your project.</p>
+        <div class="contact-detail rv">
+          <div class="cd-ico">📍</div>
+          <div><div class="cd-lbl">Office</div><div class="cd-val">JTM Mall, Jagatpur, Jaipur, Rajasthan</div></div>
+        </div>
+        <div class="contact-detail rv">
+          <div class="cd-ico">📞</div>
+          <div><div class="cd-lbl">Phone / WhatsApp</div><div class="cd-val"><a href="tel:+919876543210" style="color:var(--cream)">+91 98765 43210</a></div></div>
+        </div>
+        <div class="contact-detail rv">
+          <div class="cd-ico">✉️</div>
+          <div><div class="cd-lbl">Email</div><div class="cd-val"><a href="mailto:info@manvinconsultants.com" style="color:var(--cream)">info@manvinconsultants.com</a></div></div>
+        </div>
+        <div class="contact-detail rv">
+          <div class="cd-ico">🕑</div>
+          <div><div class="cd-lbl">Working Hours</div><div class="cd-val">Mon – Sat, 9:00 AM – 7:00 PM</div></div>
+        </div>
+      </div>
+      <div class="wa-cta-box rv">
+        <div class="wa-cta-txt">
+          <h4>Prefer WhatsApp?</h4>
+          <p>Most clients start here — quick, easy, no forms.</p>
+        </div>
+        <a class="wa-btn" href="https://wa.me/919876543210?text=Hello%2C%20I%20want%20to%20discuss%20a%20project%20with%20Manvin%20Consultants." target="_blank" rel="noopener">Chat Now</a>
+      </div>
+      <div class="map-box rv">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.0!2d75.8!3d26.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDU3JzAwLjAiTiA3NcKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="tag rv">Project Enquiry</div>
+      <h3 class="rv" style="font-family:var(--ff-d);font-size:1.6rem;font-weight:300;color:var(--cream);margin-bottom:2rem">Tell us about your project</h3>
+      <form class="cf rv" onsubmit="return false">
+        <div class="cf-row">
+          <div class="cf-g"><label>Full Name *</label><input type="text" placeholder="Ramesh Kumar" required/></div>
+          <div class="cf-g"><label>WhatsApp / Phone *</label><input type="tel" placeholder="+91 98765 43210" required/></div>
+        </div>
+        <div class="cf-g"><label>Email</label><input type="email" placeholder="you@example.com"/></div>
+        <div class="cf-row">
+          <div class="cf-g">
+            <label>Project Type *</label>
+            <select required>
+              <option value="">Select type</option>
+              <option>Residential Home</option>
+              <option>Commercial Building</option>
+              <option>Industrial Facility</option>
+              <option>Interior Design Only</option>
+              <option>Ghar Ka Naksha</option>
+              <option>Renovation</option>
+            </select>
+          </div>
+          <div class="cf-g">
+            <label>Budget Range (₹)</label>
+            <select>
+              <option value="">Select range</option>
+              <option>Under ₹10 Lakh</option>
+              <option>₹10 – ₹30 Lakh</option>
+              <option>₹30 – ₹75 Lakh</option>
+              <option>₹75 Lakh – ₹1.5 Cr</option>
+              <option>Above ₹1.5 Cr</option>
+            </select>
+          </div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-g"><label>Plot Size (approx.)</label><input type="text" placeholder="e.g. 200 sq yd, 50×80 ft"/></div>
+          <div class="cf-g"><label>Location / Area</label><input type="text" placeholder="e.g. Vaishali Nagar, Jaipur"/></div>
+        </div>
+        <div class="cf-g">
+          <label>Tell us about your project</label>
+          <textarea placeholder="Number of floors, timeline, specific requirements, any inspiration you have in mind…"></textarea>
+        </div>
+        <button type="submit" class="cf-submit" id="submitBtn">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Page navigation
+function goPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-page-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelector('[data-page="'+name+'"]').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  observeReveal();
+}
+document.querySelectorAll('.nav-page-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>goPage(btn.dataset.page));
+});
+
+// ── Scroll reveal (also triggers on page switch)
+function observeReveal(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.1});
+  document.querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el));
+}
+observeReveal();
+
+// ── Nav shrink
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').style.padding=window.scrollY>50?'0.7rem 4rem':'1.2rem 4rem';
+});
+
+// ── Portfolio filters
+document.querySelectorAll('.filt').forEach(f=>{
+  f.addEventListener('click',()=>{
+    document.querySelectorAll('.filt').forEach(x=>x.classList.remove('on'));
+    f.classList.add('on');
+  });
+});
+
+// ── Form submit feedback
+const sb=document.getElementById('submitBtn');
+if(sb){
+  sb.addEventListener('click',function(){
+    this.textContent='Sent ✓ We\'ll be in touch soon!';
+    this.style.background='#3a6e4a';
+    setTimeout(()=>{this.textContent='Send Enquiry';this.style.background='';},3500);
+  });
+}
+</script>
+</body>
+</html>

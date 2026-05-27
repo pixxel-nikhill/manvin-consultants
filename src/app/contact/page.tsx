@@ -125,12 +125,23 @@ export default function ContactPage() {
 
           <div className="map-box rv">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.4956073846424!2d75.87223187532959!3d26.84453997680783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dc9b3a6a6a6a7%3A0x0!2sJTM%20Mall%2C%20Jagatpura%2C%20Jaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1699000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.2!2d75.8310290!3d26.8374535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db7276b4c72b3%3A0x437c6ea7cd5c6ce4!2sManvin%20consultants!5e0!3m2!1sen!2sin!4v1699000000000"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Manvin Consultants location"
             />
+            <a
+              href="https://share.google/WqtdVVD6RKCjXJiWp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="gmb-btn rv"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/>
+              </svg>
+              View on Google Business
+            </a>
           </div>
         </div>
 
