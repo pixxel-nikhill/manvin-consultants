@@ -97,7 +97,7 @@ export default function Footer() {
             {[
               { icon: '📍', text: 'SF-44 B, JTM Mall Jagatpura, Jaipur – 302029' },
               { icon: '📞', text: '+91 99289 77014', href: 'tel:+919928977014' },
-              { icon: '✉️', text: 'navinsharma29@gmail.com', href: 'mailto:navinsharma29@gmail.com' },
+              { icon: '✉️', text: 'manvinjpr@gmail.com', href: 'mailto:manvinjpr@gmail.com' },
               { icon: '🕐', text: 'Mon – Sat, 9 AM – 7 PM' },
             ].map(item => (
               <li key={item.text} style={{ display: 'flex', alignItems: 'flex-start', gap: '.6rem', fontSize: '.83rem', color: 'rgba(245,240,232,0.5)', lineHeight: 1.5 }}>

@@ -91,10 +91,10 @@ export default function ContactPage() {
                 <div className="cd-lbl">Email</div>
                 <div className="cd-val">
                   <a
-                    href="mailto:navinsharma29@gmail.com"
+                    href="mailto:manvinjpr@gmail.com"
                     style={{ color: 'var(--cream)' }}
                   >
-                    navinsharma29@gmail.com
+                    manvinjpr@gmail.com
                   </a>
                 </div>
               </div>
